@@ -38,6 +38,8 @@ const getResu = (formats) => {
 app.post("/api/get-video-info", async (req, res) => {
   const { url } = req.body;
 
+  console.log(url)
+
   try {
     const { videoDetails, formats } = await ytdl.getInfo(url);
     const { title, thumbnails, lengthSeconds } = videoDetails;
@@ -165,5 +167,5 @@ if (process.env.mode === "production") {
   });
 }
 
-const port = process.env.port;
+const port = process.env.PORT;
 app.listen(port, () => console.log(`Server is running on port ${port}!`));
